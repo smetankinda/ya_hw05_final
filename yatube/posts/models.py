@@ -80,8 +80,8 @@ class Comment(models.Model):
         verbose_name = 'Комментарий'
         ordering = ('-created', )
 
-    def __str__(self):
-        return self.text
+    def __str__(self) -> str:
+        return self.text[:15]
 
 
 class Follow(models.Model):

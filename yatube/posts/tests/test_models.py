@@ -16,16 +16,15 @@ class PostModelTest(TestCase):
             description='Тестовое описание'
         )
         cls.post = Post.objects.create(
-            text='Тестовый пост',
+            text='Тестовый пост!!!!!!!!!!!!!!!!!!!!',
             author=cls.user,
             group=cls.group
         )
 
     def test_models_have_correct_object_names(self):
         """Проверяем, что у моделей корректно работает __str__."""
-        post = PostModelTest.post
-        expected_object_name = post.text[:15]
-        self.assertEqual(expected_object_name, str(post))
+        expected_object_name = self.post.text[:15]
+        self.assertEqual(expected_object_name, str(self.post))
         new_post = Post.objects.last()
         self.assertEqual(new_post.author, self.user)
         self.assertEqual(new_post.group, self.group)
@@ -95,7 +94,8 @@ class CommentModelTest(TestCase):
 
     def test_models_have_correct_object_names(self):
         """Проверяем, что у моделей корректно работает __str__."""
-        self.assertEqual(self.comment.text, str(self.comment.text))
+        expected_object_name = self.comment.text[:15]
+        self.assertEqual(expected_object_name, str(self.comment))
 
     def test_сomment_verbose_name(self):
         """Проверка verbose_name у сomment."""
